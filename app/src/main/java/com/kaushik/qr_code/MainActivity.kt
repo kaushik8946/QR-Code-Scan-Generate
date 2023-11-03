@@ -49,8 +49,8 @@ fun MakeCard(value: String, targetIntent: Intent) {
             context.startActivity(targetIntent)
         },
         modifier = Modifier
-            .fillMaxWidth(.6f)
-            .height(200.dp)
+            .fillMaxWidth(.7f)
+            .height(150.dp)
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
             Text(
