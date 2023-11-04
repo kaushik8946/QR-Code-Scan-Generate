@@ -33,33 +33,33 @@ class MainActivity : ComponentActivity() {
             ) {
                 val scannerIntent = Intent(applicationContext, Scanner::class.java)
                 MakeCard("Click for QR Scanner", scannerIntent)
-                val generatorIntent=Intent(applicationContext,Generator::class.java)
+                val generatorIntent = Intent(applicationContext, Generator::class.java)
                 MakeCard("Click for QR Generator", generatorIntent)
             }
         }
     }
-}
 
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun MakeCard(value: String, targetIntent: Intent) {
-    val context = LocalContext.current
-    Card(
-        onClick = {
-            context.startActivity(targetIntent)
-        },
-        modifier = Modifier
-            .fillMaxWidth(.7f)
-            .height(150.dp)
-    ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Text(
-                text = value,
-                fontSize = 40.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.align(Alignment.Center),
-                textAlign = TextAlign.Center
-            )
+    @OptIn(ExperimentalMaterialApi::class)
+    @Composable
+    fun MakeCard(value: String, targetIntent: Intent) {
+        val context = LocalContext.current
+        Card(
+            onClick = {
+                context.startActivity(targetIntent)
+            },
+            modifier = Modifier
+                .fillMaxWidth(.7f)
+                .height(150.dp)
+        ) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text(
+                    text = value,
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.align(Alignment.Center),
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }
