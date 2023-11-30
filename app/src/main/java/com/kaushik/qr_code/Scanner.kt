@@ -1,5 +1,6 @@
 package com.kaushik.qr_code
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -13,7 +14,10 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -61,24 +65,31 @@ class Scanner : ComponentActivity() {
         barCodeLauncher.launch(options)
     }
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Scaffold(
                 floatingActionButton = {
-                    FloatingActionButton(onClick = { checkCameraPermission(this@Scanner) }) {
+                    FloatingActionButton(
+                        onClick = {
+                            checkCameraPermission(this@Scanner)
+                        }
+                    ) {
                         Icon(
                             painter = painterResource(id = R.drawable.qr_code),
                             contentDescription = "QR Code"
                         )
                     }
-                }
-            ) { innerPadding ->
+                },
+                floatingActionButtonPosition = FabPosition.Center
+            ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(innerPadding),
+                        .padding(10.dp)
+                        .verticalScroll(rememberScrollState()),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {

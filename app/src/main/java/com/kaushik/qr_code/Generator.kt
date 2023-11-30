@@ -47,7 +47,7 @@ class Generator : ComponentActivity() {
                     shape = RoundedCornerShape(10.dp),
                     modifier = Modifier.height(60.dp)
                 )
-
+                SpacerHeight(50.dp)
                 Button(
                     onClick = {
                         if (inputText.isEmpty()) {
